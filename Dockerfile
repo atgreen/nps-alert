@@ -41,4 +41,4 @@ RUN curl -L -O "https://github.com/atgreen/green-orb/releases/download/v${GREEN_
 
 RUN chmod -R go+rwx /opt/nps-alert
 
-CMD ./orb sbcl --userinit /opt/nps-alert/.sbclrc --eval '(load "nps-alert.lisp")'
+CMD ./orb -c /etc/nps-alert/green-orb.yaml sbcl --userinit /opt/nps-alert/.sbclrc --eval '(load "nps-alert.lisp")'
