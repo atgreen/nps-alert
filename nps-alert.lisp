@@ -2,7 +2,7 @@
   (asdf:load-system pkg))
 
 (handler-case
-    (sqlite:with-open-database (db "aon.db")
+    (sqlite:with-open-database (db "/var/lib/nps-alert/nps-alert.db")
       (sqlite:execute-non-query db "create table if not exists nps_alerts (alert_id text not null primary key)")
       (let ((data
               (cdr (assoc :DATA (json:decode-json-from-string

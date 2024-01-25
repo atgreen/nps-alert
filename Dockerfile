@@ -40,5 +40,6 @@ RUN curl -L -O "https://github.com/atgreen/green-orb/releases/download/v${GREEN_
     && rm green-orb-${GREEN_ORB_VERSION}-linux-amd64.tar.gz
 
 RUN chmod -R go+rwx /opt/nps-alert
+RUN sbcl --eval "(progn (dolist (pkg '(:cl-json :sqlite :drakma :flexi-streams)) (asdf:load-system pkg)) (sb-ext:quit))"
 
 CMD ./orb -c /etc/nps-alert/green-orb.yaml sbcl --userinit /opt/nps-alert/.sbclrc --eval '(load "nps-alert.lisp")'
